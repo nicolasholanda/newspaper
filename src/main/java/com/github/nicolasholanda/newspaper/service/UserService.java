@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 import static java.lang.String.format;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
@@ -22,5 +24,9 @@ public class UserService {
     public User findById(String id) {
         return repository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, format("Usuário de id %s não encontrado", id)));
+    }
+
+    public List<User> findAll() {
+        return (List<User>) repository.findAll();
     }
 }

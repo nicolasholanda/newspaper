@@ -33,7 +33,4 @@ public class News {
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime createdAt = LocalDateTime.now();
-
-    @DynamoDBAttribute
-    private User author;
 }
