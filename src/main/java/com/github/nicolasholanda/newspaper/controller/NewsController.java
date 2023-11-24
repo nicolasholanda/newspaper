@@ -16,7 +16,7 @@ public class NewsController {
     private NewsService service;
 
     @PostMapping
-    public News save(@RequestBody News news) {
-        return service.save(news);
+    public void sendNews(@RequestBody News news) {
+        service.sendNews(news);
     }
 }

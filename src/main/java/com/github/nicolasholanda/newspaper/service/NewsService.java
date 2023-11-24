@@ -1,7 +1,7 @@
 package com.github.nicolasholanda.newspaper.service;
 
+import com.github.nicolasholanda.newspaper.messaging.MessageProducer;
 import com.github.nicolasholanda.newspaper.model.News;
-import com.github.nicolasholanda.newspaper.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,10 +9,9 @@ import org.springframework.stereotype.Service;
 public class NewsService {
 
     @Autowired
-    private NewsRepository repository;
+    private MessageProducer messageProducer;
 
-    public News save(News news) {
-//        News savedNews = repository.save(news);
-        return news;
+    public void sendNews(News news) {
+        messageProducer.send(news);
     }
 }
